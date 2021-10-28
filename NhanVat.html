@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crash landing on you</title>
+    <style>
+        :root{
+            --maincolor:#d8d0c1;
+        }
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            background: #e2e2e2;
+        }
+        body{
+            width: 1182px;
+            background: white;
+            margin: 0 auto;
+            padding: 0 8px;
+        }
+        #navbar{
+            height: 35px;
+            background: var(--maincolor);
+        }
+        #navbar .search{
+            float: left;
+            width: 280px;
+            height: 29px;
+            margin-top: 3px;
+            margin-left: 750px;
+            background: #e7e8e9a6;
+            border-radius: 16px;
+        }
+        #navbar .search input{
+            font-weight: bold;
+            background: none;
+            margin-left: 12px;
+            margin-top: 5px;
+            color:white;
+            border: none;
+            display: block;
+            float: left;
+            width: 85%;
+        }
+        #navbar .search input:focus{
+            outline: none;
+        }
+        #navbar .search span{
+            color: rgba(255, 255, 255, 0.781);
+            font-size: 1.1rem;
+            display: block;
+            float: left;
+            margin-top: 4px;
+        }
+        #banner{
+            height: 326px;
+            width: 100%;
+        }
+        #banner img{
+            width: 100%;
+            height: 100%;
+        }
+        #mainmenu{
+            height: 52px;
+            background: var(--maincolor)
+        }
+        #mainmenu>ul{
+            height: 100%;
+            list-style-type: none;
+        }
+        #mainmenu>ul>li{
+            height: 100%;
+            float: left;
+            text-align: center;
+            line-height: 52px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.9rem;
+            padding: 0 10px;
+            color: #49453a;
+            position: relative;
+        }
+        #mainmenu>ul>li:hover{
+            color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #mainmenu>ul>li>a{
+            color: #49453a;
+            text-decoration: none;
+        }
+        #mainmenu>ul>li:hover >a{
+            color: white;
+        }
+        #mainmenu>ul>li>ul{
+            list-style-type: none;
+            width: 160px;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            display: none;
+            background: var(--maincolor);
+        }
+        #mainmenu>ul>li:hover >ul{
+            display: block;
+            padding: 5px 0;
+        }
+        #mainmenu>ul>li>ul>li{
+            font-size: 0.9rem;
+            text-transform: none;
+            font-weight: bold;
+            height: 35px;
+            line-height: 35px;
+            background: var(--maincolor);
+            color: white;
+            text-align: left;
+            padding: 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+        }
+        #mainmenu>ul>li>ul>li:hover{
+            color: white;
+            background: #7e7868;
+            animation: move 1s;
+        }
+        #mainmenu>ul>li>ul>li:hover>a{
+            color: white;
+        }
+        #mainmenu>ul>li>ul>li>a{
+            color: #49453a;
+            text-decoration: none;
+        }
+        @keyframes move {
+            0%{left: 7px;}
+            20%{left: -5px;}
+            40%{left: 4px;}
+            60%{left: -2.5px;}
+            80%{left: 1px;}
+            100%{left: 0px;}
+        }
+        #newsfeed{
+            height: 35px;
+            margin: 5px 0;
+        }
+        #newsfeed .dts{
+            height: 100%;
+            width: 130px;
+            color: white;
+            background: var(--maincolor);
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 35px;
+            font-size: 0.85rem;
+            text-align: right;
+            float: left;
+        }
+        #newsfeed .arr{
+            width: 10px;
+            height: 10px;
+            border-top: 17.5px solid transparent;
+            border-bottom: 17.5px solid transparent;
+            border-left: 20px solid var(--maincolor);
+            background: #414141;
+            float: left;
+        }
+        #newsfeed .dts a{
+            color: #49453a;
+            text-decoration: none;
+            float: left;
+            margin-left: 9px;
+        }
+        #newsfeed .running{
+            width: 1015px;
+            height: 100%;
+            background: #414141;
+            float: left;
+            overflow: hidden;
+        }
+        #newsfeed .running>ul{
+            height: 100%;
+            list-style-type: none;
+            position: relative;
+            animation: run 100s infinite;
+            animation-timing-function: linear;
+            white-space: nowrap;
+            line-height: 35px;
+        }
+        #newsfeed .running>ul:hover{
+            animation-play-state: paused;
+        }
+        @keyframes run {
+            0%{left: 100%;}
+            100%{left: -10000px;}
+        }
+        #newsfeed .running>ul>li{
+            display: inline-block;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        #newsfeed .running>ul>li>a{
+            color: rgb(209, 197, 143);
+        }
+        #content .top{
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #49453a;
+            margin-top: 30px;
+        }
+        #content .bottom{
+            height: 385px;
+            width: 100%;     
+            display: flex;
+        }
+        #content .bottom>a{
+            float: left;
+            position: relative;
+            margin: auto;
+        }
+        #content .bottom>a>img{
+            width: 250px;
+            height: 355px;
+            vertical-align: middle;
+        }
+        #content .bottom>a>img:last-child{
+            margin-right: 0px;
+        }
+        #content .bottom>a:hover>img{
+            animation: opacity 3s;
+        }
+        @keyframes opacity{
+            0%{opacity: 50%;}
+            100%{opacity: 100%;}
+        }
+        #content .bottom>a> div{
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            padding: 3px;
+            background: #d8d0c1b4;
+            text-align: center;
+            color: #49453a;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        #footer{
+            background: var(--maincolor);
+            width: 100%;
+            height: 280px;
+            margin-top: 45px;
+            color: #49453a;
+        }
+        #footer .top{
+            float: left;
+            margin-top: 35px;
+            margin-left: 15px;
+            font-size: 1.1rem;
+        }
+        #footer .top p{
+            margin-left: 5px;
+            display: inline-block;
+        }
+        #footer .bottom{
+            float: left;
+        }
+        #footer .bottom>a{
+            font-size: 1.9rem;
+            text-decoration: none;
+            color: #49453a;
+            letter-spacing: 15px;
+            line-height: 50px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="navbar">
+        <div class="search">
+            <input type="text" placeholder="Tìm tập phim...">
+            <span class="glyphicon glyphicon-search"></span>
+        </div>
+    </div>
+    <div id="banner"> 
+        <img src="banner.png" alt="">
+    </div>
+    <div id="mainmenu">
+        <ul>
+         <li><a href="">TRANG CHỦ</a></li>
+         <li>NHÂN VẬT
+             <ul>
+                 <li><a href="">NHÂN VẬT CHÍNH</a></li>
+                 <li><a href="">NHÂN VẬT PHỤ</a></li>
+             </ul>
+         </li>
+         <li><a href="">DANH SÁCH TẬP PHIM</a></li>
+         <li>PHỤ ĐỀ
+            <ul>
+                <li><a href="">TIẾNG ANH</a></li>
+                <li><a href="">TIẾNG VIỆT</a></li>
+            </ul>
+         </li>
+         <li><a href="">REVIEW</a></li>
+         </ul>
+    </div>
+    <div id="newsfeed">
+        <div class="dts"> <a href="">Tin mới nhất</a></div>
+        <div class="arr"></div>
+        <div class="running">
+            <ul>
+                <li><a href="">Tập phim mới nhất sẽ ra mắt vào ngày 24/11/2021</a></li>
+                <li><a href="">Nam diễn viên Hyun Bin và nữ diễn viên Son Ye Jin xác nhận tham gia họp báo kết thúc phim</a></li>
+                <li><a href="">Bộ phim "Crash landing on you" nhận 8 đề cử hạng mục truyền hình của giải Baeksang</a></li>
+                <li><a href="">"Crash landing on you" dẫn đầu danh sách phim truyền hình Hàn hay nhất mọi thời</a></li>
+                <li><a href="">Lý do giúp "Crash landing on you" đang là phim truyền hình Hàn hot nhất hiện nay</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="top">
+            <p>DANH SÁCH NHÂN VẬT CHÍNH</p>
+        </div>
+        <div class="bottom">
+            <a href="">
+                <img src="NV1.jpg" alt="">
+                <div>Hyun Bin <br>(vai Ri Jung Hyuk)</div>
+            </a>
+            <a href="">
+                <img src="NV2.jpg" alt="">
+                <div>Son Ye Jin <br>(vai Yoon Se Ri)</div>
+            </a>
+            <a href="">
+                <img src="NV4.jpg" alt="">
+                <div>Seo Ji Hye <br>(vai Seo Dan)</div>
+            </a>
+            <a href="">
+                <img src="NV5.jpg" alt="">
+                <div>Kim Jung Hyun <br>(vai Goo Seung Joon)</div>
+            </a>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="top">
+            <p><b>CRASH LANDING ON YOU VIETNAM FANPAGE</b></p>
+            <div>
+                <i class="fas fa-heart"></i>
+                <p>Nơi gửi gắm sự nhiệt huyết</p>
+            </div>
+            <div>
+                <i class="fas fa-home"></i>
+                <p>Tân Mai, Hoàng Mai, Hà Nội, Vietnam</p>
+            </div>
+            <div>
+                <i class="fas fa-phone"></i>
+                <p>(84) 988 088 455</p>
+            </div>
+            <div class="bottom">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-snapchat"></i></a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

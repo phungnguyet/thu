@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crash landing on you</title>
+    <style>
+        :root{
+            --maincolor:#d8d0c1;
+        }
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            background: #e2e2e2;
+        }
+        body{
+            width: 1182px;
+            background: white;
+            margin: 0 auto;
+            padding: 0 8px;
+        }
+        #navbar{
+            height: 35px;
+            background: var(--maincolor);
+        }
+        #navbar .search{
+            float: left;
+            width: 280px;
+            height: 29px;
+            margin-top: 3px;
+            margin-left: 750px;
+            background: #e7e8e9a6;
+            border-radius: 16px;
+        }
+        #navbar .search input{
+            font-weight: bold;
+            background: none;
+            margin-left: 12px;
+            margin-top: 5px;
+            color:white;
+            border: none;
+            display: block;
+            float: left;
+            width: 85%;
+        }
+        #navbar .search input:focus{
+            outline: none;
+        }
+        #navbar .search span{
+            color: rgba(255, 255, 255, 0.781);
+            font-size: 1.1rem;
+            display: block;
+            float: left;
+            margin-top: 4px;
+        }
+        #banner{
+            height: 326px;
+            width: 100%;
+        }
+        #banner img{
+            width: 100%;
+            height: 100%;
+        }
+        #mainmenu{
+            height: 52px;
+            background: var(--maincolor)
+        }
+        #mainmenu>ul{
+            height: 100%;
+            list-style-type: none;
+        }
+        #mainmenu>ul>li{
+            height: 100%;
+            float: left;
+            text-align: center;
+            line-height: 52px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.9rem;
+            padding: 0 10px;
+            color: #49453a;
+            position: relative;
+        }
+        #mainmenu>ul>li:hover{
+            color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #mainmenu>ul>li>a{
+            color: #49453a;
+            text-decoration: none;
+        }
+        #mainmenu>ul>li:hover >a{
+            color: white;
+        }
+        #mainmenu>ul>li>ul{
+            list-style-type: none;
+            width: 160px;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            display: none;
+            background: var(--maincolor);
+        }
+        #mainmenu>ul>li:hover >ul{
+            display: block;
+            padding: 5px 0;
+        }
+        #mainmenu>ul>li>ul>li{
+            font-size: 0.9rem;
+            text-transform: none;
+            font-weight: bold;
+            height: 35px;
+            line-height: 35px;
+            background: var(--maincolor);
+            color: white;
+            text-align: left;
+            padding: 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+        }
+        #mainmenu>ul>li>ul>li:hover{
+            color: white;
+            background: #7e7868;
+            animation: move 1s;
+        }
+        #mainmenu>ul>li>ul>li:hover>a{
+            color: white;
+        }
+        #mainmenu>ul>li>ul>li>a{
+            color: #49453a;
+            text-decoration: none;
+        }
+        @keyframes move {
+            0%{left: 7px;}
+            20%{left: -5px;}
+            40%{left: 4px;}
+            60%{left: -2.5px;}
+            80%{left: 1px;}
+            100%{left: 0px;}
+        }
+        #newsfeed{
+            height: 35px;
+            margin: 5px 0;
+        }
+        #newsfeed .dts{
+            height: 100%;
+            width: 130px;
+            color: white;
+            background: var(--maincolor);
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 35px;
+            font-size: 0.85rem;
+            text-align: right;
+            float: left;
+        }
+        #newsfeed .arr{
+            width: 10px;
+            height: 10px;
+            border-top: 17.5px solid transparent;
+            border-bottom: 17.5px solid transparent;
+            border-left: 20px solid var(--maincolor);
+            background: #414141;
+            float: left;
+        }
+        #newsfeed .dts a{
+            color: #49453a;
+            text-decoration: none;
+            float: left;
+            margin-left: 9px;
+        }
+        #newsfeed .running{
+            width: 1015px;
+            height: 100%;
+            background: #414141;
+            float: left;
+            overflow: hidden;
+        }
+        #newsfeed .running>ul{
+            height: 100%;
+            list-style-type: none;
+            position: relative;
+            animation: run 100s infinite;
+            animation-timing-function: linear;
+            white-space: nowrap;
+            line-height: 35px;
+        }
+        #newsfeed .running>ul:hover{
+            animation-play-state: paused;
+        }
+        @keyframes run {
+            0%{left: 100%;}
+            100%{left: -10000px;}
+        }
+        #newsfeed .running>ul>li{
+            display: inline-block;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        #newsfeed .running>ul>li>a{
+            color: rgb(209, 197, 143);
+        }
+        #maincontent{
+            height: 512px;
+        }
+        #maincontent .left{
+            width: 769px;
+            height: 100%;
+            margin-right: 10px;
+            float: left;
+            position: relative;
+        }
+        #maincontent .left img{
+            height: 100%;
+            width: 100%;
+        }
+        #maincontent .left div{
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            padding: 8px;
+            background: #d8d0c1b4;
+            text-align: center;
+        }
+        #maincontent .left div .button {
+            background-color: #414141; 
+            border: none;
+            padding: 7px 15px;
+            display: inline-block;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; 
+            transition-duration: 0.4s;
+        }
+        #maincontent .left div .button:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        #maincontent .left div .button a{
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            font-size: 14px; 
+        }
+        #maincontent .left div .button:hover a{
+            color: rgb(209, 197, 143);
+        }
+        #maincontent .right{
+            width: 387px;
+            height: 100%;
+            float: left; 
+        }
+        #maincontent .right .top{
+            width: 100%;
+            height: 90px;
+            background-color: #414141;
+            float: left;
+        }
+        @font-face{
+            font-family: font2;
+            src: url(font2.ttf);
+        }
+        #maincontent .right .top h2{
+            color: rgb(245, 245, 210);
+            font-size: 2.8rem;
+            text-align: center;
+            font-family: font2;
+            letter-spacing: 2px;
+        }
+        #maincontent .right .bottom{
+            float: left;
+            padding: 20px 10px 8px 15px;
+            height: 422px;
+            width: 100%;
+            color: #49453a;
+            overflow-y: auto;
+            background: var(--maincolor);
+        }
+        #maincontent .right .bottom::-webkit-scrollbar{
+            width: 7px;
+            height: 90px;
+        }
+        #maincontent .right .bottom::-webkit-scrollbar-track{
+            background: var(--maincolor);
+        }
+        #maincontent .right .bottom::-webkit-scrollbar-thumb{
+            background: #41414194;
+            display: none;
+            border-radius: 15px;
+        }
+
+        #maincontent .right .bottom:hover::-webkit-scrollbar-thumb{
+            display: block;
+        }
+        #maincontent .right .bottom h2{
+            font-style: italic;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        #ad .top{
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #49453a;
+            margin-top: 20px;
+        }
+        #ad .bottom{
+            height: 285px;
+            width: 100%;     
+        }
+        #ad .bottom>a{
+            margin-right: 10px;
+            line-height: 25px;
+            float: left;
+            position: relative;
+        }
+        #ad .bottom>a>img{
+            width: 185px;
+            height: 280px;
+            vertical-align: middle;
+        }
+        #ad .bottom>a>img:last-child{
+            margin-right: 0px;
+        }
+        #ad .bottom>a:hover>img{
+            animation: imgopacity 3s;
+        }
+        @keyframes imgopacity{
+            0%{opacity: 50%;}
+            100%{opacity: 100%;}
+        }
+        #ad .bottom>a> div{
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            padding: 8px;
+            background: #d8d0c1b4;
+            text-align: center;
+            color: #49453a;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        #quote{
+            height: 630px;
+            width: 100%;
+            margin-top: 40px;
+        }
+        #quote hr{
+            margin-bottom: 40px;
+        }
+        #quote .left{
+            width: 700px;
+            height: 100%;
+            float: left;
+            display: flex;
+        }
+        #quote .left .panel{
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            background: #fae2cf;
+            border-radius: 5rem;
+        }
+        @font-face {
+            font-family: font1;
+            src: url(font1.ttf);
+        }
+        #quote .left .panel p{
+            color: #49453a;
+            font-family: font1;
+            font-size: 3rem;
+            text-align: center;
+        }
+        #quote .left .panel span{
+            font-size: 80px;
+            line-height:0.6em;
+            opacity:0.2;
+            margin-left: 40px;
+        }
+        #quote .right{
+            height: 100%;
+            width: 450px;
+            float: left;
+        }
+        #quote .right img{
+            height: 598px;
+            width: 385px;
+            border: 2.5px solid var(--maincolor);
+            border-radius: 5px;
+            padding: 7px;
+        }
+        #footer{
+            background: var(--maincolor);
+            width: 100%;
+            height: 280px;
+            margin-top: 45px;
+            color: #49453a;
+        }
+        #footer .top{
+            float: left;
+            padding-top: 35px;
+            padding-left: 15px;  
+            font-size: 1.1rem;
+        }
+        #footer .top p{
+            margin-left: 5px;
+            display: inline-block;
+        }
+        #footer .bottom{
+            float: left;
+        }
+        #footer .bottom>a{
+            font-size: 1.9rem;
+            text-decoration: none;
+            color: #49453a;
+            letter-spacing: 15px;
+            line-height: 50px;
+        }
+
+        </style>
+</head>
+<body>
+    <div id="navbar">
+        <div class="search">
+            <input type="text" placeholder="Tìm tập phim...">
+            <span class="glyphicon glyphicon-search"></span>
+        </div>
+    </div>
+    <div id="banner"> 
+        <img src="banner.png" alt="">
+    </div>
+    <div id="mainmenu">
+        <ul>
+         <li><a href="">TRANG CHỦ</a></li>
+         <li>NHÂN VẬT
+             <ul>
+                 <li><a href="NhanVat.html">NHÂN VẬT CHÍNH</a></li>
+                 <li><a href="">NHÂN VẬT PHỤ</a></li>
+             </ul>
+         </li>
+         <li><a href="">DANH SÁCH TẬP PHIM</a></li>
+         <li>PHỤ ĐỀ
+            <ul>
+                <li><a href="">TIẾNG ANH</a></li>
+                <li><a href="">TIẾNG VIỆT</a></li>
+            </ul>
+         </li>
+         <li><a href="">REVIEW</a></li>
+         </ul>
+    </div>
+    <div id="newsfeed">
+        <div class="dts"> <a href="">Tin mới nhất</a></div>
+        <div class="arr"></div>
+        <div class="running">
+            <ul>
+                <li><a href="">Tập phim mới nhất sẽ ra mắt vào ngày 24/11/2021</a></li>
+                <li><a href="">Nam diễn viên Hyun Bin và nữ diễn viên Son Ye Jin xác nhận tham gia họp báo kết thúc phim</a></li>
+                <li><a href="">Bộ phim "Crash landing on you" nhận 8 đề cử hạng mục truyền hình của giải Baeksang</a></li>
+                <li><a href="">"Crash landing on you" dẫn đầu danh sách phim truyền hình Hàn hay nhất mọi thời</a></li>
+                <li><a href="">Lý do giúp "Crash landing on you" đang là phim truyền hình Hàn hot nhất hiện nay</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="maincontent">
+        <div class="left">
+            <img src="content.jpg" alt="">
+            <div>
+                <button class="button"><a href="">XEM PHIM</a></button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="top">
+                <H2>CRASH LANDING ON YOU</H2>
+            </div>
+            <div class="bottom">
+                <p>Trạng thái: Tập 14/16</p>
+                <p>Đạo diễn: Lee Jung Hyo</p>
+                <p>Thời lượng: 70 phút/tập</p>
+                <p>Tình trạng: Đang Hoàn thành</p>
+                <p>Năm sản xuất: 2011</p>
+                <p>Quốc gia: Hàn Quốc</p>
+                <p>Thể loại: Tâm Lý - Tình Cảm, Hài Hước, Thuyết Minh</p>
+                <h2>NỘI DUNG:</h2>
+                <p>Nội dung bộ phim xoay quanh chuyện tình cảm giữa nữ nhân xinh đẹp giàu có, sành điệu người Hàn Quốc Yoon Seri (Son Ye Jin thủ vai) với Ri Jung Hyuk (Hyun Bin thủ vai) - một sĩ quan đại úy của quân đội Triều Tiên.</p>
+                <p>Seri vì chơi dù lượn bị lốc xoáy mà vô tình lạc qua biên giới Triều Tiên và gặp “tình yêu định mệnh” với quân nhân Ri Jung Hyuk. Mối tình kẻ Nam người Bắc của Ri Jung Hyeok với ái nữ nhà tài phiệt Yoon Se Ri ngay lập tức ghi điểm với khán giả bởi sự kịch tính đến từ bối cảnh chính trị nhạy cảm.</p>
+                <p>Ngoài 2 diễn viên nổi tiếng, điểm khiến bộ phim trở thành cơn sốt chính là nhờ nội dung độc đáo, thú vị. "Hạ cánh nơi anh" khai thác đề tài quân nhân quen thuộc của màn ảnh Hàn. Tuy nhiên, phim thể hiện góc nhìn táo bạo khi đề cập đến chuyện tình xuyên biên giới của cặp đôi nhân vật chính. Việc táo bạo dựng nên một chuyện tình xuyên biên giới giữa một quân nhân Bắc Hàn và một cô gái Nam Hàn đã mang tới những sắc thái mới mẻ cho bộ phim, cả về tính giải trí lẫn thông điệp.</p>
+                <p>Song song với đó, sự khác biệt về lối sống, văn hoá cùng tình hình chính trị nhạy cảm giữa hai bên đem đến cho tác phẩm những tình huống kịch tính. Dù vấp phải vô vàn thử thách, Jeong Hyeok và Yoon Seri vẫn cố gắng tìm cách xích lại gần nhau và làm chỗ dựa cho nhau trước những khó khăn trong cuộc sống.</p>
+                <p>Tình cảm của Yoon Se Ri và Ri Jung Hyuk không chỉ là tình cảm nam nữ đơn thuần mà còn là biểu trưng cho khát vọng hòa bình, hòa hợp dân tộc, khiến bộ phim trở nên đặc biệt hơn một bộ phim tình cảm thông thường.</p>
+            </div>
+        </div>
+    </div>
+    <div id="ad">
+        <div class="top">
+            <p>Tập phim đề cử</p>
+        </div>
+        <div class="bottom">
+            <a href="">
+                <img src="ad4.jpg" alt="">
+                <div>Tập 1</div>
+            </a>
+            <a href="">
+                <img src="ad1.jpg" alt="">
+                <div>Tập 4</div>
+            </a>
+            <a href="">
+                <img src="ad5.png" alt="">
+                <div>Tập 8</div>
+            </a>
+            <a href="">
+                <img src="ad2.jpg" alt="">
+                <div>Tập 11</div>
+            </a>
+        </div>
+    </div>
+    <div id="quote">
+        <hr  width="100%" color="#414141" />
+        <div class="left">
+            <div class="panel">
+                <span>❝</span>
+                <p><i>Người tuyệt đối không được quên trong đời không phải là người mình ghét mà là người mình thích.</i></p>
+            </div>
+        </div>
+        <div class="right">
+            <img src="ad3.jpg" alt="">
+        </div>
+    </div>
+    <div id="footer">
+        <div class="top">
+            <p><b>CRASH LANDING ON YOU VIETNAM FANPAGE</b></p>
+            <div>
+                <i class="fas fa-heart"></i>
+                <p>Nơi gửi gắm sự nhiệt huyết</p>
+            </div>
+            <div>
+                <i class="fas fa-home"></i>
+                <p>Tân Mai, Hoàng Mai, Hà Nội, Vietnam</p>
+            </div>
+            <div>
+                <i class="fas fa-phone"></i>
+                <p>(84) 988 088 455</p>
+            </div>
+            <div class="bottom">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-snapchat"></i></a>
+            </div>
+        </div>
+        
+    </div>
+</html>
